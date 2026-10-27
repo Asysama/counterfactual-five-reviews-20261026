@@ -1,0 +1,52 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>catenary_rope_sag_reversal</title><style>body{font:16px/1.65 system-ui,-apple-system,sans-serif;color:#173045;background:#f3f5f7;margin:0}
+main{max-width:1180px;margin:auto;padding:26px}h1{font-size:26px;overflow-wrap:anywhere}h2{margin-top:34px}
+a{color:#0757b4}code{overflow-wrap:anywhere}section,article{background:#fff;border:1px solid #d6dde4;padding:18px;border-radius:12px;margin:18px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.vid{margin:0;min-width:0}video{width:100%;aspect-ratio:1;background:#000}
+table{border-collapse:collapse;width:100%;font-size:14px}td,th{border:1px solid #ccd5df;padding:7px;text-align:left}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#eef1f4;padding:12px;border-radius:8px}
+.small{color:#5a6b7b;font-size:13px}.good{color:#18623d}.pill{display:inline-block;background:#e7f0ff;border-radius:999px;padding:2px 10px;margin:2px;font-size:13px}</style><main><h1>catenary_rope_sag_reversal</h1>
+<p><span class="pill">generator catenary_rope_sag_reversal</span><span class="pill">head d09437140f6b34b2ffc03cceb88f41327f923e74</span>
+<span class="pill">native 2048x2048 · 24 fps · 120 frames · 5 s · H.264</span><span class="pill">violating-object-only mask</span></p>
+<p><strong>Pull request</strong>: <a href="https://github.com/hipo-dev/counterfactual-data/pull/778">https://github.com/hipo-dev/counterfactual-data/pull/778</a> · <strong>commit</strong>: <code>d09437140f6b34b2ffc03cceb88f41327f923e74</code></p>
+<p><strong>Operator</strong>: <code>negate_rope_self_weight</code> · <strong>scene params</strong>:
+<pre>{
+ &quot;anchor_height&quot;: 1.5245,
+ &quot;appearance&quot;: 3,
+ &quot;camera_elevation_ratio&quot;: 0.24,
+ &quot;depth&quot;: 1.03,
+ &quot;drag&quot;: 0.55,
+ &quot;excess&quot;: 0.0783333333333333,
+ &quot;gravity&quot;: 9.81,
+ &quot;hump&quot;: 0.36608,
+ &quot;iterations&quot;: 40,
+ &quot;length&quot;: 1.28,
+ &quot;model&quot;: &quot;Custom position-based-dynamics cable model written for this generator, not a native Blender physics simulation and not a field solver. The rope is a chain of 33 point masses joined by 32 inextensible distance constraints whose rest length is the rope length. The two end points are pinned to the anchor eyes on the post tops. Per recorded frame the model runs 6 substeps of 1/144 s: velocities are advanced, the distance constraints are projected 10 times with sequential Gauss-Seidel sweeps, and velocities are recovered from the projected positions with linear drag. The only difference between the two branches is the sign of the constant body acceleration applied to the rope particles: the True branch always applies -9.81 m/s^2 in z, and the counterfactual branch applies +9.81 m/s^2 in z from the single intervention frame onward. The posts, anchors, rope rest length, rope radius, camera, materials, initial shape and initial velocities are identical in both branches. The counterfactual is therefore a rope whose own weight points upward, which is not a static equilibrium of any hanging cable. The model does not resolve rope twist, bending stiffness or aerodynamic lift, and the rendered curve is a discretised hanging cable, not an exact analytic catenary.&quot;,
+ &quot;onset&quot;: 39,
+ &quot;post_height&quot;: 1.1844999999999999,
+ &quot;response&quot;: 0.9099999999999999,
+ &quot;rope_length&quot;: 3.588693333333334,
+ &quot;rope_radius&quot;: 0.035333333333333335,
+ &quot;segment_length&quot;: 0.11214666666666669,
+ &quot;solver_steps_per_frame&quot;: 6,
+ &quot;span&quot;: 3.3280000000000003,
+ &quot;substeps&quot;: 6,
+ &quot;time_scale&quot;: 1.0,
+ &quot;view&quot;: 4
+}</pre></p>
+<h2>Rendered cases</h2><section><h3>Case 42</h3><div class="grid"><figure class="vid"><figcaption><strong>True</strong></figcaption><video id="v42-true" controls playsinline muted preload="metadata"><source src="media/42-true.mp4" type="video/mp4"></video><small>seed 42</small></figure><figure class="vid"><figcaption><strong>Counterfactual</strong></figcaption><video id="v42-counterfactual" controls playsinline muted preload="metadata" poster="poster-42.png"><source src="media/42-counterfactual.mp4" type="video/mp4"></video><small>seed 42</small></figure><figure class="vid"><figcaption><strong>Mask</strong></figcaption><video id="v42-mask" controls playsinline muted preload="metadata"><source src="media/42-mask.mp4" type="video/mp4"></video><small>seed 42</small></figure><figure class="vid"><figcaption><strong>Overlay</strong></figcaption><video id="v42-mask_overlay" controls playsinline muted preload="metadata"><source src="media/42-mask_overlay.mp4" type="video/mp4"></video><small>seed 42</small></figure></div>
+<p><strong>True prompt</strong><br>Two upright posts stand on a flat base. A slack rope is tied between the top of each post and is released. The rope falls under its own weight and settles hanging in a smooth curve that sags below the line joining the two post tops.</p>
+<p><strong>Counterfactual prompt</strong><br>Two upright posts stand on a flat base. A slack rope is tied between the top of each post and is released. The rope falls under its own weight, then swings upward and comes to rest in an arch above the line joining the two post tops.</p>
+<p class="small">decoded audit: first changed frame 40, mask start 40,
+evidence frame 48, exact prefix True, strict binary mask True,
+overlay matches counterfactual outside the mask True.</p></section><section><h3>Case 98</h3><div class="grid"><figure class="vid"><figcaption><strong>True</strong></figcaption><video id="v98-true" controls playsinline muted preload="metadata"><source src="media/98-true.mp4" type="video/mp4"></video><small>seed 98</small></figure><figure class="vid"><figcaption><strong>Counterfactual</strong></figcaption><video id="v98-counterfactual" controls playsinline muted preload="metadata" poster="poster-98.png"><source src="media/98-counterfactual.mp4" type="video/mp4"></video><small>seed 98</small></figure><figure class="vid"><figcaption><strong>Mask</strong></figcaption><video id="v98-mask" controls playsinline muted preload="metadata"><source src="media/98-mask.mp4" type="video/mp4"></video><small>seed 98</small></figure><figure class="vid"><figcaption><strong>Overlay</strong></figcaption><video id="v98-mask_overlay" controls playsinline muted preload="metadata"><source src="media/98-mask_overlay.mp4" type="video/mp4"></video><small>seed 98</small></figure></div>
+<p><strong>True prompt</strong><br>Two upright posts stand on a flat base. A slack rope is tied between the top of each post and is released. The rope falls under its own weight and settles hanging in a smooth curve that sags below the line joining the two post tops.</p>
+<p><strong>Counterfactual prompt</strong><br>Two upright posts stand on a flat base. A slack rope is tied between the top of each post and is released. The rope falls under its own weight, then swings upward and comes to rest in an arch above the line joining the two post tops.</p>
+<p class="small">decoded audit: first changed frame 44, mask start 44,
+evidence frame 53, exact prefix True, strict binary mask True,
+overlay matches counterfactual outside the mask True.</p></section>
+<h2>Case summary</h2><table><tr><th>seed</th><th>operator</th><th>first changed</th><th>mask start</th><th>evidence</th><th>decoded audit</th><th>output</th></tr><tr><td>42</td><td>negate_rope_self_weight</td><td>40</td><td>40</td><td>48</td><td>PASS</td><td>2048x2048 / 24fps / 120f</td></tr><tr><td>98</td><td>negate_rope_self_weight</td><td>44</td><td>44</td><td>53</td><td>PASS</td><td>2048x2048 / 24fps / 120f</td></tr></table>
+<h2>Contract</h2>
+<p>True and Counterfactual are produced by one declared operator applied once at a single intervention frame.
+Every decoded frame before the intervention frame is exactly equal. The mask contains only the visible pixels of the
+violating object and never a shadow. Physical time equals video time; the solver steps per recorded frame and the
+internal time step are recorded in each case metadata.</p></main></html>
